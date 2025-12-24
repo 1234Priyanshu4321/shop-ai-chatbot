@@ -12,7 +12,7 @@
 	let loading = false;
 	let loadingHistory = true;
 	let sessionId: string | null = null;
-	const API_URL = 'http://localhost:3001';
+	const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 	let messagesContainer: HTMLDivElement;
 
 	// Load session ID and chat history from localStorage on mount
