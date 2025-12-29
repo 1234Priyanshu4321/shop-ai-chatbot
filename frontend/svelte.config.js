@@ -11,7 +11,16 @@ const config = {
       fallback: 'index.html',
       precompress: false,
       strict: true
-    })
+    }),
+    prerender: {
+      handleHttpError: ({ path, referrer, message }) => {
+        // Ignore 404s for favicon
+        if (path === '/favicon.png' || path === '/favicon.ico') {
+          return;
+        }
+        throw new Error(message);
+      }
+    }
   }
 };
 
